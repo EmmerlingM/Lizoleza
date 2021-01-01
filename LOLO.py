@@ -14,4 +14,11 @@ plt.ylabel("Frequency of ocurrence")
 ax.set_axisbelow(True)
 ax.grid(b=True, which='both', axis='both', color='black', linewidth=0.7, alpha=0.2)
 
+kpm = nptable[:,4].reshape((-1, 1))
+gpm = nptable[:,5]
 regressor = sk.LinearRegression()
+gpmmodel = regressor.fit(kpm, gpm)
+gpmmodel.score(kpm, gpm)
+print(gpmmodel.intercept_)
+print(gpmmodel.coef_)
+gpmmodel.predict(kpm)
